@@ -1,0 +1,27 @@
+body{
+    font-family: cursive;
+    background-color: whitesmoke;
+    font-size: 50px;
+}
+
+#heading{
+    font-size: 50px;
+    text-align: center;    
+}
+#myInput{
+    font-size: 35px;
+    border: 5px solid black;
+    border-radius: 10px;
+}
+#mailHolder{
+    margin: 40px 50px;
+}
+#mySubmitBtn{
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 30px;
+    color: white;
+    background-color: cadetblue;
+    margin: 50px 200px;
+    font-family: cursive;
+}
