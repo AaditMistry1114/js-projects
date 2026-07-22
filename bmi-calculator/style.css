@@ -1,0 +1,45 @@
+body{
+    font-family: cursive;
+    background-color: bisque;
+}
+
+#header{
+    text-align: center;
+    text-decoration: underline ;
+}
+
+#container{
+    text-align: center;
+    margin-top: 50px;
+}
+
+#weight{
+    margin-top: 20px;
+}
+
+#submitBtn{
+    margin-top: 30px;
+    padding: 10px;
+    font-size:20px;
+    background-color: darkslategray;
+    color: white;
+
+    border-radius: 7px;
+}
+
+#answer{
+    text-align: center;
+    margin-top: 40px;
+    font-size: x-large;
+}
+
+.myLabel{
+    font-size: larger;
+    color: rgb(23, 225, 121);
+}
+
+.myInput{
+    font-size: large;
+    border: 5px thin black;
+    border-radius: 5px;
+}
