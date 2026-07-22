@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1 id="header">Student Registration Form</h1>
+
+    <div id="container">
+
+        <!-- Name -->
+        <label for="myName" class="labels">Name:</label>
+        <input type="text" id="myName" class="inputs"><br><br>
+
+        <!-- Age -->
+        <label for="myAge" class="labels">Age:</label>
+        <input type="number" id="myAge" class="inputs"><br><br>
+
+        <!-- Email -->
+        <label for="myEmail" class="labels">Email:</label>
+        <input type="email" id="myEmail" class="inputs"><br><br>
+
+        <!-- Password -->
+        <label for="myPassword" class="labels">Password:</label>
+        <input type="password" id="myPassword" class="inputs"><br><br>
+
+        <!-- Confirm Password -->
+        <label for="myConfirmPassword" class="labels">Confirm Password:</label>
+        <input type="password" id="myConfirmPassword" class="inputs"><br><br>
+
+        <!-- Course -->
+        <label for="course" class="labels">Course:</label>
+        <select id="course" class="inputs">
+            <option value="" selected disabled>Select a Course</option>
+            <option value="btech">B.Tech</option>
+            <option value="be">B.E.</option>
+            <option value="bms">BMS</option>
+            <option value="db">DB</option>
+        </select><br><br>
+
+        <!-- Gender -->
+        <label for="male" class="labels">Male</label>
+        <input type="radio" id="male" name="gender" class="inputs">
+
+        <label for="female" class="labels">Female</label>
+        <input type="radio" id="female" name="gender" class="inputs">
+
+        <label for="other" class="labels">Other</label>
+        <input type="radio" id="other" name="gender" class="inputs"><br><br>
+
+        <!-- Terms & Conditions -->
+        <label for="myTerms" class="labels">Terms & Conditions</label>
+        <input type="checkbox" id="myTerms" class="inputs"><br><br>
+
+        <button type="button" id="submitBtn" class="labels">Register</button>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

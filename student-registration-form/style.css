@@ -1,0 +1,36 @@
+body{
+font-family: cursive;
+background-color:rgb(219, 242, 197);
+
+}
+
+#container{
+   margin: 40px 50px;
+}
+
+#header{
+    margin: 40px 50px;
+    color:rgb(0, 170, 255);
+}
+
+.labels{
+    font-size: x-large;
+    margin-right: 5px;
+}
+
+.inputs{
+    font-size: large;
+}
+
+#course{
+       margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#submitBtn{
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+
+}
