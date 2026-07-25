@@ -1,0 +1,42 @@
+body {
+    font-family: cursive;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin-top: 100px;
+}
+
+#header {
+    color: #333;
+}
+
+#inputField {
+    width: 200px;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    font-size: 18px;
+}
+
+#convertBtn {
+    padding: 10px 25px;
+    font-size: 16px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#convertBtn:hover {
+    background-color: #555;
+}
+
+#answer {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 25px;
+}
