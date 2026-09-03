@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HisaabKitab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- <form id="container"> -->
+    <h1 id="title">HisaabKitab - An Expense Tracker App</h1>
+
+    <label for="description">Description:</label>
+    <textarea id="description" rows="5" placeholder="Enter a description"></textarea><br><br>
+
+    <label for="amount">Amount:</label>
+    <input type="number" placeholder="Enter an amount" id="amount"><br>
+
+    <label for="category">Category:</label>
+    <select name="category" id="category">
+        <option value="food" >Food</option>
+        <option value="travel">Travel</option>
+        <option value="shopping">Shopping</option>
+        <option value="entertainment">Entertainment</option>
+    </select><br>
+    
+    <label for="custom-category">Enter your own custom category:</label>
+    <input
+    type="text"
+    id="custom-category"
+    placeholder="Enter custom category"
+    >
+    <button id="add-category-btn">+ Add Category</button>
+
+    <button id="addExpense">Add Expense</button>
+
+    <button id="clear-btn">Clear</button>
+
+    <select id="filter-category">
+        <option value="all">All</option>
+        <option value="food">Food</option>
+        <option value="travel">Travel</option>
+        <option value="shopping">Shopping</option>
+        <option value="entertainment">Entertainment</option>
+    </select>
+
+    <div id="result"></div>
+
+    <label for="total">TOTAL AMOUNT</label>
+    <p id="total" >0</p>
+
+    <!-- </form> -->
+    <script src="index.js"></script>
+</body>
+</html>

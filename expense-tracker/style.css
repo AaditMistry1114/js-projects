@@ -1,0 +1,152 @@
+/* body {
+    background-color:dimgrey ;
+} */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #181818;
+    color: #e8e8e8;
+    max-width: 750px;
+    margin: auto;
+    padding: 40px 25px;
+}
+
+/* Heading */
+
+#title {
+    text-align: center;
+    margin-bottom: 35px;
+    color: #ffffff;
+}
+
+/* Labels */
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    color: #bdbdbd;
+    font-size: 14px;
+}
+
+/* Inputs */
+
+textarea,
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+
+    background: #242424;
+    color: #ffffff;
+
+    border: 1px solid #3a3a3a;
+    border-radius: 6px;
+
+    font-size: 15px;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+textarea:focus,
+input:focus,
+select:focus {
+    border-color: #777;
+}
+
+/* Buttons */
+
+button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#addExpense {
+    background: #4caf50;
+    color: white;
+}
+
+#clear-btn {
+    background: #444;
+    color: white;
+    margin-left: 8px;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+/* Filter */
+
+#filter-category {
+    margin-top: 15px;
+}
+
+/* Expenses */
+
+#result {
+    margin-top: 10px;
+}
+
+#result p {
+    background: #242424;
+    border: 1px solid #333;
+
+    padding: 15px;
+    margin-bottom: 10px;
+
+    border-radius: 6px;
+}
+
+/* Edit and Delete */
+
+.edit-btn,
+.delete-btn {
+    padding: 7px 11px;
+    margin-left: 8px;
+    font-size: 12px;
+}
+
+.edit-btn {
+    background: #d99a24;
+    color: white;
+}
+
+.delete-btn {
+    background: #d64545;
+    color: white;
+}
+
+/* Total */
+
+label[for="total"] {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#total {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+
+    background: #242424;
+    border: 1px solid #333;
+
+    padding: 18px;
+    margin-top: 8px;
+
+    border-radius: 6px;
+    color: #4caf50;
+}
