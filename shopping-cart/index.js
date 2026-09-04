@@ -80,7 +80,37 @@ function displayCart(){
         const cartItemName = document.createElement("p");
         cartItemName.textContent = cartItem.name + " x " + cartItem.quantity;
 
+        const addQuantityBtn = document.createElement("button");
+        addQuantityBtn.textContent = "+";
+        addQuantityBtn.addEventListener("click", () =>{
+            
+            cartItem.quantity++;
+            displayCart();
+
+        });
+
+        const subQuantityBtn = document.createElement("button");
+        subQuantityBtn.textContent = "-";
+        subQuantityBtn.addEventListener("click", () =>{
+            
+            // if quantity is 1 and button is clicked item gets removed
+            if(cartItem.quantity === 1){
+                
+                // returns index of element which matches condition
+                const index = cart.findIndex(elem => elem.id === cartItem.id)
+                cart.splice(index, 1);
+                displayCart();
+            }
+            else{
+                cartItem.quantity--;
+                displayCart();
+            }
+
+        });
+
         cartDiv.appendChild(cartItemName);
+        cartDiv.appendChild(addQuantityBtn);
+        cartDiv.appendChild(subQuantityBtn);
 
         // adding child container to parent container
         cartContainer.appendChild(cartDiv);
