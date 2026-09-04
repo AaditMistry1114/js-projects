@@ -10,6 +10,13 @@ const cart = [];
 
 const productsContainer = document.getElementById("products-container");
 
+const cartContainer = document.getElementById("cart-container");
+
+
+displayProducts();
+
+
+
 function displayProducts(){
 
     products.forEach((product) => {
@@ -31,20 +38,22 @@ function displayProducts(){
         addToCartBtn.textContent = "Add to Cart";
         addToCartBtn.addEventListener("click", () => {
        
-        // create a copy of product
-        const cartItem = { ...product };
 
         // find() returns first element which matches condition 
-        const existingItem = cart.find((cartItem) =>{
-            return cartItem.id === product.id;
+        const existingItem = cart.find((elem) =>{
+            return elem.id === product.id;
         });
         
         if(existingItem){
             existingItem.quantity++;
+            displayCart();
         }
         else{
+            // create a copy of product
+            const cartItem = { ...product };
             cartItem.quantity = 1;
             cart.push(cartItem);
+            displayCart();
         }
 
         });
@@ -59,5 +68,24 @@ function displayProducts(){
     });
 }
 
+function displayCart(){
+    
+    cartContainer.innerHTML = ""; 
 
-displayProducts();
+    cart.forEach((cartItem) => {
+
+        // cart child element
+        const cartDiv = document.createElement("div");
+
+        const cartItemName = document.createElement("p");
+        cartItemName.textContent = cartItem.name + " x " + cartItem.quantity;
+
+        cartDiv.appendChild(cartItemName);
+
+        // adding child container to parent container
+        cartContainer.appendChild(cartDiv);
+
+    });
+
+}
+
