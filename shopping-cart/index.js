@@ -30,8 +30,23 @@ function displayProducts(){
         const addToCartBtn = document.createElement("button");
         addToCartBtn.textContent = "Add to Cart";
         addToCartBtn.addEventListener("click", () => {
-            cart.push(product);
-            console.log(cart);
+       
+        // create a copy of product
+        const cartItem = { ...product };
+
+        // find() returns first element which matches condition 
+        const existingItem = cart.find((cartItem) =>{
+            return cartItem.id === product.id;
+        });
+        
+        if(existingItem){
+            existingItem.quantity++;
+        }
+        else{
+            cartItem.quantity = 1;
+            cart.push(cartItem);
+        }
+
         });
 
         productDiv.appendChild(prodName);
