@@ -6,9 +6,11 @@ const products = [
     {id : 4, name:"T-Shirt", price : 1000, category : "Clothes"}
 ];
 
-function displayProducts(){
+const cart = [];
 
-    const productsContainer = document.getElementById("products-container");
+const productsContainer = document.getElementById("products-container");
+
+function displayProducts(){
 
     products.forEach((product) => {
 
@@ -27,6 +29,10 @@ function displayProducts(){
 
         const addToCartBtn = document.createElement("button");
         addToCartBtn.textContent = "Add to Cart";
+        addToCartBtn.addEventListener("click", () => {
+            cart.push(product);
+            console.log(cart);
+        });
 
         productDiv.appendChild(prodName);
         productDiv.appendChild(prodPrice);
@@ -37,5 +43,6 @@ function displayProducts(){
         productsContainer.appendChild(productDiv);
     });
 }
+
 
 displayProducts();
