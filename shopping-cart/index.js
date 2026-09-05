@@ -24,6 +24,8 @@ function displayProducts(){
 
         // child element container
         const productDiv = document.createElement("div");
+        // give every child element container its class
+        productDiv.classList.add("product-card");
 
         // add each property of product by creating element and appending in child element.
         const prodName = document.createElement("p");
@@ -88,12 +90,14 @@ function displayCart(){
 
         // cart child element
         const cartDiv = document.createElement("div");
+        // give every child element container its class
+        cartDiv.classList.add("cart-item");
 
         const cartItemName = document.createElement("p");
         cartItemName.textContent = cartItem.name + " x " + cartItem.quantity;
 
         const cartItemPrice = document.createElement("p");
-        cartItemPrice.textContent = "₹" + cartItem.price;
+        cartItemPrice.textContent = "₹" + cartItem.quantity * cartItem.price;
 
         const addQuantityBtn = document.createElement("button");
         addQuantityBtn.textContent = "+";
