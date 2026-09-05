@@ -76,6 +76,14 @@ function displayCart(){
     // It clears previous output
     cartContainer.innerHTML = ""; 
 
+    // If cart is empty show this text
+    if( cart.length === 0 ){
+
+        cartContainer.textContent = "Your cart is empty";
+
+    // else show each item
+    }else{
+
     cart.forEach((cartItem) => {
 
         // cart child element
@@ -109,7 +117,6 @@ function displayCart(){
                 cart.splice(index, 1);
                 saveCart();
                 displayCart();
-                // cartTotalAmount.textContent = "Total: ₹" + calculateTotal();
                 
             }
             else{
@@ -130,7 +137,9 @@ function displayCart(){
 
     });
 
-    cartTotalAmount.textContent = "Total: ₹" + calculateTotal();
+    }
+
+    cartTotalAmount.textContent = "Total: ₹" + calculateTotal(); 
 }
 
 function calculateTotal(){
