@@ -15,8 +15,6 @@ const cartContainer = document.getElementById("cart-container");
 
 displayProducts();
 
-
-
 function displayProducts(){
 
     products.forEach((product) => {
@@ -80,6 +78,9 @@ function displayCart(){
         const cartItemName = document.createElement("p");
         cartItemName.textContent = cartItem.name + " x " + cartItem.quantity;
 
+        const cartItemPrice = document.createElement("p");
+        cartItemPrice.textContent = "₹" + cartItem.price;
+
         const addQuantityBtn = document.createElement("button");
         addQuantityBtn.textContent = "+";
         addQuantityBtn.addEventListener("click", () =>{
@@ -109,6 +110,7 @@ function displayCart(){
         });
 
         cartDiv.appendChild(cartItemName);
+        cartDiv.appendChild(cartItemPrice);
         cartDiv.appendChild(addQuantityBtn);
         cartDiv.appendChild(subQuantityBtn);
 
@@ -116,6 +118,20 @@ function displayCart(){
         cartContainer.appendChild(cartDiv);
 
     });
+
+    console.log(calculateTotal());
+
+}
+
+function calculateTotal(){
+
+    const totalAmount = cart.reduce((prev,curr) => {
+
+        return prev + (curr.quantity * curr.price); 
+        
+    },0);
+
+    return totalAmount;
 
 }
 
