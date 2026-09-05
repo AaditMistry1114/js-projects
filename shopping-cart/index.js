@@ -14,7 +14,7 @@ const cartContainer = document.getElementById("cart-container");
 
 const cartTotalAmount = document.getElementById("cart-total-amount");
 
-
+loadCart();
 displayProducts();
 displayCart();
 
@@ -47,6 +47,7 @@ function displayProducts(){
         
         if(existingItem){
             existingItem.quantity++;
+            saveCart();
             displayCart();
         }
         else{
@@ -54,6 +55,7 @@ function displayProducts(){
             const cartItem = { ...product };
             cartItem.quantity = 1;
             cart.push(cartItem);
+            saveCart();
             displayCart();
         }
 
@@ -90,6 +92,7 @@ function displayCart(){
         addQuantityBtn.addEventListener("click", () =>{
             
             cartItem.quantity++;
+            saveCart();
             displayCart();
 
         });
@@ -104,12 +107,14 @@ function displayCart(){
                 // returns index of element which matches condition
                 const index = cart.findIndex(elem => elem.id === cartItem.id)
                 cart.splice(index, 1);
+                saveCart();
                 displayCart();
                 // cartTotalAmount.textContent = "Total: ₹" + calculateTotal();
                 
             }
             else{
                 cartItem.quantity--;
+                saveCart();
                 displayCart();
             }
 
@@ -140,3 +145,21 @@ function calculateTotal(){
 
 }
 
+// saves data to localstorage
+function saveCart(){
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+}
+
+// get data inside localstorage
+function loadCart(){
+
+    const savedCartItems = JSON.parse(localStorage.getItem("cart"));
+
+    // if items are inside cart , get it else nothing
+    if(savedCartItems){
+        cart.push( ...savedCartItems );
+    }
+
+}
