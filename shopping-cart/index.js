@@ -12,8 +12,11 @@ const productsContainer = document.getElementById("products-container");
 
 const cartContainer = document.getElementById("cart-container");
 
+const cartTotalAmount = document.getElementById("cart-total-amount");
+
 
 displayProducts();
+displayCart();
 
 function displayProducts(){
 
@@ -68,6 +71,7 @@ function displayProducts(){
 
 function displayCart(){
     
+    // It clears previous output
     cartContainer.innerHTML = ""; 
 
     cart.forEach((cartItem) => {
@@ -101,6 +105,8 @@ function displayCart(){
                 const index = cart.findIndex(elem => elem.id === cartItem.id)
                 cart.splice(index, 1);
                 displayCart();
+                // cartTotalAmount.textContent = "Total: ₹" + calculateTotal();
+                
             }
             else{
                 cartItem.quantity--;
@@ -119,8 +125,7 @@ function displayCart(){
 
     });
 
-    console.log(calculateTotal());
-
+    cartTotalAmount.textContent = "Total: ₹" + calculateTotal();
 }
 
 function calculateTotal(){
@@ -128,7 +133,7 @@ function calculateTotal(){
     const totalAmount = cart.reduce((prev,curr) => {
 
         return prev + (curr.quantity * curr.price); 
-        
+
     },0);
 
     return totalAmount;
