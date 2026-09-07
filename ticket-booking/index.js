@@ -2,6 +2,8 @@ const rows = ["A", "B", "C", "D"];
 const seatsPerRow = 5;
 const price = 200;
 const selectedSeatsList = document.getElementById("selected-seats-list");
+const ticketCount = document.getElementById("ticket-count");
+const totalPrice = document.getElementById("total-price");
 
 const seats = [];
 
@@ -98,6 +100,12 @@ function selectedSeats(){
         return elem.status === "selected";
     });
 
+    // all selected seats count
+    ticketCount.textContent =  `Tickets:${allSelectedSeats.length}`;
+
+    // all selected tickets price
+    totalPrice.textContent =  `Total: ₹${calculateTotalPrice(allSelectedSeats)}`;
+
     const selectedSeatsIDs = allSelectedSeats.map( elem => {
         return elem.id;
     });
@@ -109,3 +117,10 @@ function selectedSeats(){
     }
 
 }
+
+function calculateTotalPrice(allSelectedSeats){
+    return allSelectedSeats.reduce((prev, curr) =>{
+        return prev + curr.price;
+    },0);
+}
+
