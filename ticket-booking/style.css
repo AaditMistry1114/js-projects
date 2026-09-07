@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: sans-serif;
-    text-align: canter;
+    text-align: center;
 }
 
 h1 {
@@ -30,6 +30,7 @@ h1 {
     font-weight: bold;
     cursor: pointer;
     background-color: white;
+    transition: 0.2s;
 }
 
 /* seat status */
@@ -46,4 +47,41 @@ h1 {
 .seat[data-status="booked"] {
     background-color: #f44336;
     color: white;
+}
+
+.booking-container {
+    width: 90%;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+.screen {
+    width: 70%;
+    margin: 20px auto 30px;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 4px solid #333;
+    font-weight: bold;
+}
+
+.seat[data-status="available"]:hover {
+
+    background-color: #e0e0e0;
+
+}
+
+#selected-seats {
+    margin-top: 30px;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+}
+
+#selected-seats-list {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
 }

@@ -1,11 +1,14 @@
 const rows = ["A", "B", "C", "D"];
 const seatsPerRow = 5;
 const price = 200;
+const selectedSeatsList = document.getElementById("selected-seats-list");
 
 const seats = [];
 
 generateSeats();
 displaySeats();
+selectedSeats();
+
 
 function generateSeats(){
 
@@ -85,6 +88,24 @@ function handleSeatClick(event){
         // update actual DOM element
         event.currentTarget.dataset.status = "selected";
     }
-        
+    selectedSeats();
+}
+
+// To get all selected seats
+function selectedSeats(){
+
+    const allSelectedSeats = seats.filter( elem => {
+        return elem.status === "selected";
+    });
+
+    const selectedSeatsIDs = allSelectedSeats.map( elem => {
+        return elem.id;
+    });
+
+    if( selectedSeatsIDs.length === 0 ){
+        selectedSeatsList.textContent = "no seats selected";
+    }else{
+        selectedSeatsList.textContent = selectedSeatsIDs.join(", ");
+    }
 
 }
