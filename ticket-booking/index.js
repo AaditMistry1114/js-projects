@@ -21,9 +21,6 @@ function generateSeats(){
             seats.push(seat);
         }
     }
-
-    console.log(seats);
-
 }
 
 function displaySeats(){
@@ -31,7 +28,7 @@ function displaySeats(){
     // main seat container
     const seatContainer = document.getElementById("seat-container");
 
-
+    // row generation
     for(let row of rows){
 
         
@@ -46,20 +43,17 @@ function displaySeats(){
         seatContainer.appendChild(rowDiv);
 
     }
-
+    
+    // individual seat generation
     seats.forEach(elem => {
 
         const individualSeat = document.createElement("button");
         individualSeat.textContent = elem.id;
         individualSeat.classList.add("seat");
         individualSeat.dataset.seatId = elem.id;
-                
+        individualSeat.dataset.status = elem.status;       
         const rowElement = document.querySelector(`[data-row="${elem.row}"]`);
 
         rowElement.appendChild(individualSeat);
-
-        // console.log(rowElement);
-
-});
-
+    });
 }

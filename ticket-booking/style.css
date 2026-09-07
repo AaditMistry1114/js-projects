@@ -31,3 +31,19 @@ h1 {
     cursor: pointer;
     background-color: white;
 }
+
+/* seat status */
+.seat[data-status="available"] {
+    background-color: white;
+    color: black;
+}
+
+.seat[data-status="selected"] {
+    background-color: #2196f3;
+    color: white;
+}
+
+.seat[data-status="booked"] {
+    background-color: #f44336;
+    color: white;
+}
