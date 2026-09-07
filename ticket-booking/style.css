@@ -86,3 +86,47 @@ h1 {
     font-size: 18px;
     font-weight: bold;
 }
+
+#toast {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    
+    padding: 15px 20px;
+    border-radius: 8px;
+
+    color: white;
+    
+    font-size: 16px;
+    
+    display: none;
+}
+
+.toast-success {
+    background-color: #61d55d;
+}
+
+.toast-error {
+    background-color: #f44336;
+}
+
+#book-btn {
+    display: block;
+    margin: 30px auto 0;
+    padding: 13px 40px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: #7c3aed;
+    color: white;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+#book-btn:hover {
+    background-color: #6d28d9;
+}

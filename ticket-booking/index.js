@@ -5,6 +5,7 @@ const selectedSeatsList = document.getElementById("selected-seats-list");
 const ticketCount = document.getElementById("ticket-count");
 const totalPrice = document.getElementById("total-price");
 const bookBtn = document.getElementById("book-btn");
+const toast = document.getElementById("toast");
 
 const seats = [];
 
@@ -140,10 +141,41 @@ function validateBooking(){
 function handleBooking(){
     
     if(validateBooking()){
-        console.log("Booking can proceed");
+
+        const selectedSeatsToBook = seats.filter(elem => {
+            return elem.status === "selected";
+        });
+
+        // change status of each selected seat to booked 
+        selectedSeatsToBook.forEach( elem => {
+            elem.status = "booked";
+            const seatElement = document.querySelector(`[data-seat-id="${elem.id}"]`);
+            // seatElement.dataset.status = "booked";
+            seatElement.dataset.status = "booked";
+        });
+
+        const bookedSeatsIds = selectedSeatsToBook.map( elem => elem.id );
+
+        selectedSeats();
+
+        toast.innerHTML = `Booking Confirm!!<br>Seats ${bookedSeatsIds.join(", ")} booked successfully.`;
+        toast.classList.remove("toast-error");
+        toast.classList.add("toast-success");
+        toast.style.display = "block";
+
+        setTimeout(() =>{
+            toast.style.display = "none";
+        },3000);
     }
     else{
-        alert("Please select at least one seat");
+        toast.textContent = "Please select at least one seat";
+        toast.classList.remove("toast-success");
+        toast.classList.add("toast-error");
+        toast.style.display = "block";
+
+        setTimeout(() =>{
+            toast.style.display = "none";
+        },3000);
     }
 }
 
