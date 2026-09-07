@@ -43,7 +43,7 @@ function displaySeats(){
         seatContainer.appendChild(rowDiv);
 
     }
-    
+
     // individual seat generation
     seats.forEach(elem => {
 
@@ -51,9 +51,40 @@ function displaySeats(){
         individualSeat.textContent = elem.id;
         individualSeat.classList.add("seat");
         individualSeat.dataset.seatId = elem.id;
-        individualSeat.dataset.status = elem.status;       
+        individualSeat.dataset.status = elem.status;   
+        
+        individualSeat.addEventListener("click",handleSeatClick);
+    
+        // search which row seat belongs to
         const rowElement = document.querySelector(`[data-row="${elem.row}"]`);
 
         rowElement.appendChild(individualSeat);
     });
+    
+}
+
+function handleSeatClick(event){
+
+    // actul element from DOM
+    const clickedSeat = event.currentTarget;
+
+    // JS object
+    let currentSeat = seats.find( elem => elem.id === clickedSeat.dataset.seatId );
+
+    if(currentSeat.status === "booked"){
+        return;
+    }
+    else if(currentSeat.status === "selected"){
+        // update object
+        currentSeat.status = "available";
+        // update actual DOM element
+        event.currentTarget.dataset.status = "available";
+    }else{
+        // update object
+        currentSeat.status = "selected";
+        // update actual DOM element
+        event.currentTarget.dataset.status = "selected";
+    }
+        
+
 }
