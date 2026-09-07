@@ -4,6 +4,7 @@ const price = 200;
 const selectedSeatsList = document.getElementById("selected-seats-list");
 const ticketCount = document.getElementById("ticket-count");
 const totalPrice = document.getElementById("total-price");
+const bookBtn = document.getElementById("book-btn");
 
 const seats = [];
 
@@ -11,6 +12,7 @@ generateSeats();
 displaySeats();
 selectedSeats();
 
+bookBtn.addEventListener("click", handleBooking);
 
 function generateSeats(){
 
@@ -122,5 +124,26 @@ function calculateTotalPrice(allSelectedSeats){
     return allSelectedSeats.reduce((prev, curr) =>{
         return prev + curr.price;
     },0);
+}
+
+function validateBooking(){
+
+    const validSelectedSeats = seats.filter( elem => {
+        return elem.status === "selected";
+    });
+
+    // if length > 0 -> true
+    // if length <= 0 -> false
+    return validSelectedSeats.length > 0;
+}
+
+function handleBooking(){
+    
+    if(validateBooking()){
+        console.log("Booking can proceed");
+    }
+    else{
+        alert("Please select at least one seat");
+    }
 }
 
