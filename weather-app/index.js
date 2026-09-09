@@ -4,6 +4,14 @@ const result = document.getElementById("result");
 
 searchBtn.addEventListener("click", getInformation);
 
+// type city name and click enter to start searching
+cityInput.addEventListener("keydown", (event) =>{
+    if(event.key === "Enter"){
+        getInformation();
+    }
+
+});
+
 async function getInformation() {
 
     const searchedCity = cityInput.value.trim();
@@ -19,6 +27,7 @@ async function getInformation() {
     }
 
     result.textContent = "Loading.....";
+    cityInput.value = "";
     
     // error handling for network issue etc etc 
     try {
@@ -32,7 +41,7 @@ async function getInformation() {
 
         // City not found
         if (!data.results || data.results.length === 0) {
-            alert("City not found");
+            result.textContent = "City not found";
             return;
         }
 
@@ -81,14 +90,14 @@ async function getInformation() {
         }
 
 
-        result.innerHTML = `Temperature: ${weatherdata.current.temperature_2m} °C <br>
+        result.innerHTML = `City: ${searchedCity}<br>
+                            Temperature: ${weatherdata.current.temperature_2m} °C <br>
                             Humidity: ${weatherdata.current.relative_humidity_2m} % <br>
                             Wind Speed: ${weatherdata.current.wind_speed_10m} ${weatherdata.current_units.wind_speed_10m}<br>
                             Weather Code: ${weather_codes[weatherdata.current.weather_code]}`;
 
     } catch (error) {
-
-        alert("Something went wrong. Please try again.");
-
+        result.textContent = "Something went wrong. Please try again.";
     }
+
 }
