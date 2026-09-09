@@ -2,28 +2,57 @@ const cityInput = document.getElementById("city-input");
 const searchBtn = document.getElementById("search-btn");
 const result = document.getElementById("result");
 
-searchBtn.addEventListener("click" , getInformation);
+searchBtn.addEventListener("click", getInformation);
 
-async function getInformation(){
+async function getInformation() {
 
-    const searchedCity = cityInput.value;
+    const searchedCity = cityInput.value.trim();
+
+    if (searchedCity.length === 0) {
+        alert("Enter a city to search");
+        return;
+    }
+
+    if (!/^[a-zA-Z ]+$/.test(searchedCity)) {
+        alert("Numbers or special characters are not allowed");
+        return;
+    }
+
+    result.textContent = "Loading.....";
     
-    const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${searchedCity}&count=1&language=en&format=json`);
-    
-    const data = await response.json();
+    try {
 
+        // Get latitude and longitude
+        const response = await fetch(
+            `https://geocoding-api.open-meteo.com/v1/search?name=${searchedCity}&count=1&language=en&format=json`
+        );
 
-    const latitude = data.results[0].latitude;
+        const data = await response.json();
 
-    const longitude = data.results[0].longitude;
+        // City not found
+        if (!data.results || data.results.length === 0) {
+            alert("City not found");
+            return;
+        }
 
-    console.log(latitude);
-    console.log(longitude);
+        const latitude = data.results[0].latitude;
+        const longitude = data.results[0].longitude;
 
-    const weatherinfo = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m`);
-    
-    const weatherdata = await weatherinfo.json();
+        console.log(latitude);
+        console.log(longitude);
 
-    result.textContent = weatherdata.current.temperature_2m;
+        // Get weather using coordinates
+        const weatherinfo = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m`
+        );
 
+        const weatherdata = await weatherinfo.json();
+
+        result.textContent = weatherdata.current.temperature_2m;
+
+    } catch (error) {
+
+        alert("Something went wrong. Please try again.");
+
+    }
 }
