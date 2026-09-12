@@ -7,15 +7,28 @@ searchInput.addEventListener("input", () =>{
     clearTimeout(timer);
     timer = setTimeout(() => {
         getInfo();
-    },1000);
+    },500);
 });
 
 
 async function getInfo(){
 
+    if( searchInput.value.trim() === ""){
+        searchResult.textContent = "";
+        return;
+    }
+
+    searchResult.textContent = "Loading....";
+    
     const response = await fetch(`https://api.tvmaze.com/search/shows?q=${searchInput.value}`);
 
     const data = await response.json();
+
+    // console.log(data);
+    if( data.length === 0 ){
+        searchResult.textContent = "No results found";
+        return;
+    }
 
     searchResult.textContent = "";
 
