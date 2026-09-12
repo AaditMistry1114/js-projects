@@ -1,11 +1,19 @@
 const searchInput = document.getElementById("searchInput");
 const searchResult = document.getElementById("result");
+let timer;
 
-searchInput.addEventListener("input", getInfo)
+// main debouncing logic
+searchInput.addEventListener("input", () =>{
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+        getInfo();
+    },1000);
+});
 
-async function getInfo(event){
 
-    const response = await fetch(`https://api.tvmaze.com/search/shows?q=${event.currentTarget.value}`);
+async function getInfo(){
+
+    const response = await fetch(`https://api.tvmaze.com/search/shows?q=${searchInput.value}`);
 
     const data = await response.json();
 
